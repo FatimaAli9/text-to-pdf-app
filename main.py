@@ -19,24 +19,25 @@ class PDF(FPDF):
     def __init__(self):
         super().__init__()
         self.set_auto_page_break(auto=True, margin=15)
-        self.set_font("Arial", "", 12)
+        self.add_font('DejaVu', '', 'DejaVuSans.ttf', uni=True)
+        self.set_font("DejaVu", "", 12)
 
     def header(self):
         self.set_fill_color(50, 90, 150)
         self.set_text_color(255)
-        self.set_font("Arial", "B", 14)
+        self.set_font("DejaVu", "B", 14)
         self.cell(0, 10, "Client Analysis Report", ln=True, align="C", fill=True)
         self.ln(5)
 
     def chapter_title(self, title):
         self.set_text_color(30, 30, 30)
-        self.set_font("Arial", "B", 12)
+        self.set_font("DejaVu", "B", 12)
         self.cell(0, 10, title, ln=True, align="L")
         self.ln(2)
 
     def chapter_body(self, body):
         self.set_text_color(50, 50, 50)
-        self.set_font("Arial", "", 11)
+        self.set_font("DejaVu", "", 11)
         self.multi_cell(0, 8, body)
         self.ln()
 
